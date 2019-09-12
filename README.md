@@ -1,6 +1,10 @@
 # SimplexWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+This project aims to provide an easy to use simplex that works offline within a browser and can possibly show the steps taken to find the optimal value (or certificates for non optimal ones).
+
+## Before start
+
+Install the project dependencies by running `npm install`
 
 ## Development server
 
@@ -14,14 +18,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Ace Editor
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This project uses the Ace Editor in its distribution "brace" <https://github.com/thlorenz/brace>. It has a syntax highlighter to highlight the Linear Program that the person is writting. The Ace mod with the highlighter is within src/app/prog-lin/ace.mod.ts.
