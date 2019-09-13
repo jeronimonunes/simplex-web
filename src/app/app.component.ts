@@ -16,7 +16,8 @@ const MODE = 'ace/mode/progLin';
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('editor', { static: true }) editor: ElementRef<HTMLDivElement>;
+  @ViewChild('editor', { static: true }) editor!: ElementRef<HTMLDivElement>;
+  @ViewChild('fpi', { static: true }) fpi!: ElementRef<HTMLDivElement>;
 
   constructor() {
 
@@ -26,9 +27,16 @@ export class AppComponent implements OnInit {
     const editor = ace.edit(this.editor.nativeElement);
     editor.setTheme(THEME);
     editor.getSession().setMode(MODE);
+    const fpi = ace.edit(this.fpi.nativeElement);
+    fpi.setTheme(THEME);
+    fpi.getSession().setMode(MODE);
+    fpi.setReadOnly(true);
     editor.getSession().on('change', () => {
       try {
         const val = langParser.parse(editor.getValue()) as ProgLin;
+        const fpii = val.toFPI();
+        fpi.setValue(fpii.toString());
+        fpi.clearSelection();
         editor.getSession().clearAnnotations();
       } catch (e) {
         if (e instanceof langParser.SyntaxError) {

@@ -21,4 +21,30 @@ export class CanonicalAddition extends Expression {
         return new CanonicalAddition(this.independent.multiply(v), this.terms.map(t => t.multiply(v)));
     }
 
+    toString() {
+        let result = '';
+        if (!this.independent.isZero()) {
+            result += this.independent;
+        }
+        for (const term of this.terms) {
+            if (result) {
+                result += ' ';
+            }
+            result += term;
+        }
+        return result;
+    }
+
+    replaceVar(label: string, replace: Variable[]) {
+        const terms = new Array<Variable>();
+        for (const term of this.terms) {
+            if (term.label === label) {
+                terms.push(...replace.map(rep => rep.multiply(term.factor)));
+            } else {
+                terms.push(term);
+            }
+        }
+        return new CanonicalAddition(this.independent, terms);
+    }
+
 }

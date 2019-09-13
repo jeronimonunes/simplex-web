@@ -3,7 +3,7 @@ import { Fraction } from './fraction';
 
 export class Variable extends Expression {
 
-    constructor(private factor: Fraction, public label: string) {
+    constructor(public factor: Fraction, public label: string) {
         super();
     }
 
@@ -26,5 +26,13 @@ export class Variable extends Expression {
     getVars(set = new Set<string>()) {
         set.add(this.label);
         return set;
+    }
+
+    toString(sign = true) {
+        let fac = this.factor.toString(false);
+        if (fac.indexOf('/') !== -1) {
+            fac = '(' + fac + ')';
+        }
+        return fac + this.label;
     }
 }

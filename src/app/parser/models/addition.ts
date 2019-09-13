@@ -14,8 +14,8 @@ export class Addition extends Expression {
         const pile = this.terms.slice();
         const vars: { [key: string]: Variable } = {};
         let num = ZERO;
-        while (pile.length) {
-            const v = pile.pop().canonify();
+        for (let u = pile.pop(); u; u = pile.pop()) {
+            const v = u.canonify();
             if (v instanceof Fraction) {
                 num = num.add(v);
             } else if (v instanceof Variable) {

@@ -16,6 +16,8 @@ import { Fraction, ONE } from './models/fraction';
 
 // Unfortunatelly pegjs does not have a way for us to pass the necessary classes.
 
+declare var window: any;
+
 window['ProgLin'] = ProgLin;
 window['Addition'] = Addition;
 window['Subtraction'] = Subtraction;

@@ -4,13 +4,13 @@ import * as ace from 'brace';
 
 (ace as any).define('ace/mode/progLin_highlight_rules',
     ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text_highlight_rules'],
-    function(acequire: any, exports: any, module: any) {
+    function (acequire: any, exports: any, module: any) {
         'use strict';
 
         const oop = acequire('../lib/oop');
         const TextHighlightRules = acequire('./text_highlight_rules').TextHighlightRules;
 
-        const ProgLinHighlightRules = function() {
+        const ProgLinHighlightRules = function (this: any) {
             this.$rules = {
                 start: [{
                     token: 'keyword',
@@ -46,14 +46,14 @@ import * as ace from 'brace';
 
 (ace as any).define('ace/mode/progLin',
     ['require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/progLin_highlight_rules'],
-    function(acequire: any, exports: any, module: any) {
+    function (acequire: any, exports: any, module: any) {
         'use strict';
 
         const oop = acequire('../lib/oop');
         const TextMode = acequire('./text').Mode;
         const ProgLinHighlightRules = acequire('./progLin_highlight_rules').ProgLinHighlightRules;
 
-        const Mode = function() {
+        const Mode = function (this: any) {
             this.HighlightRules = ProgLinHighlightRules;
             this.$behaviour = this.$defaultBehaviour;
         };
