@@ -1,4 +1,4 @@
-import { Fraction } from './fraction';
+import { Fraction, ZERO } from './fraction';
 import { Expression } from './expression';
 import { Variable } from './variable';
 
@@ -15,6 +15,15 @@ export class CanonicalAddition extends Expression {
     getVars(set = new Set<string>()) {
         this.terms.forEach(term => term.getVars(set));
         return set;
+    }
+
+    getCoefficient(label: string) {
+        for (const term of this.terms) {
+            if (term.label === label) {
+                return term.factor;
+            }
+        }
+        return ZERO;
     }
 
     multiply(v: Fraction) {

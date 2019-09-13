@@ -4,6 +4,10 @@ import 'brace/theme/monokai';
 import './prog-lin.ace.mod';
 import { langParser } from './parser/parser';
 import { ProgLin } from './parser/models/ProgLin';
+import { SimplexService } from './simplex.service';
+import { BehaviorSubject, of } from 'rxjs';
+import { Fpi } from './parser/models/fpi';
+import { switchMap, shareReplay, debounceTime } from 'rxjs/operators';
 
 const THEME = 'ace/theme/monokai';
 const MODE = 'ace/mode/progLin';
@@ -19,7 +23,14 @@ export class AppComponent implements OnInit {
   @ViewChild('editor', { static: true }) editor!: ElementRef<HTMLDivElement>;
   @ViewChild('fpi', { static: true }) fpi!: ElementRef<HTMLDivElement>;
 
-  constructor() {
+  resultingFPI = new BehaviorSubject<null | Fpi>(null);
+
+  solution$ = this.resultingFPI.pipe(
+    debounceTime(500),
+    switchMap(fpi => fpi === null ? of(null) : this.simplexService.evaluate(fpi)
+    ), shareReplay(1));
+
+  constructor(private simplexService: SimplexService) {
 
   }
 
@@ -38,7 +49,9 @@ export class AppComponent implements OnInit {
         fpi.setValue(fpii.toString());
         fpi.clearSelection();
         editor.getSession().clearAnnotations();
+        this.resultingFPI.next(fpii);
       } catch (e) {
+        this.resultingFPI.next(null);
         if (e instanceof langParser.SyntaxError) {
           editor.getSession().setAnnotations([
             {

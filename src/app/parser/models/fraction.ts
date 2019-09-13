@@ -1,4 +1,5 @@
 import { Expression } from './expression';
+import { NativeFraction } from 'src/native/simplex';
 
 declare const BigInt: (v: string | number) => bigint;
 
@@ -6,6 +7,13 @@ export class Fraction extends Expression {
 
     constructor(private numerator: bigint, private denominator: bigint) {
         super();
+    }
+
+    toNativeFraction(): NativeFraction {
+        return {
+            numerator: this.numerator.toString(),
+            denominator: this.denominator.toString()
+        };
     }
 
     isZero() {

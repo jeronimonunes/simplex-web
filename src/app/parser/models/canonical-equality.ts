@@ -1,6 +1,6 @@
 import { CanonicalRestriction } from './canonical-restriction';
 import { Variable } from './variable';
-import { Fraction } from './fraction';
+import { Fraction, ZERO } from './fraction';
 
 export class CanonicalEquality extends CanonicalRestriction {
 
@@ -14,6 +14,19 @@ export class CanonicalEquality extends CanonicalRestriction {
 
     turnIntoEquality(positiveVars: Set<string>) {
         return this;
+    }
+
+    getCoefficient(label: string) {
+        for (const term of this.left) {
+            if (term.label === label) {
+                return term.factor;
+            }
+        }
+        return ZERO;
+    }
+
+    getIndependent() {
+        return this.right;
     }
 
     toString() {

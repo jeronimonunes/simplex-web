@@ -1,11 +1,18 @@
 import { CanonicalAddition } from './canonical-addition';
-import { Equality } from './equality';
 import { CanonicalEquality } from './canonical-equality';
+import { NEG } from './fraction';
 
 export class Fpi {
 
     constructor(private objective: CanonicalAddition, private restrictions: CanonicalEquality[], private vars: string[]) {
 
+    }
+
+    toMatrix() {
+        const c = this.vars.map(v => this.objective.getCoefficient(v).multiply(NEG).toNativeFraction());
+        const a = this.restrictions.map(r => this.vars.map(v => r.getCoefficient(v).toNativeFraction()));
+        const b = this.restrictions.map(r => r.getIndependent().toNativeFraction());
+        return { a, b, c };
     }
 
     toString() {
