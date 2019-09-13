@@ -17,6 +17,7 @@
 
 <div #editor></div>
 
+<mat-toolbar *ngIf="error$ | async as error" color="warn">{{error}}</mat-toolbar>
 <div class="instructions">
   <p>Following you can see the PL you typed above turned into FPI form</p>
 </div>

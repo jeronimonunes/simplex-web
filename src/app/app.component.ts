@@ -1,13 +1,12 @@
-import { Component, ViewChild, ElementRef, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import * as ace from 'brace';
 import 'brace/theme/monokai';
 import './prog-lin.ace.mod';
-import { langParser } from './parser/parser';
-import { ProgLin } from './parser/models/ProgLin';
 import { SimplexService } from './simplex.service';
-import { BehaviorSubject, of } from 'rxjs';
-import { Fpi } from './parser/models/fpi';
-import { switchMap, shareReplay, debounceTime } from 'rxjs/operators';
+import { BehaviorSubject, EMPTY, of, asyncScheduler } from 'rxjs';
+import { ParserService } from './parser/parser.service';
+import { switchMap, shareReplay, observeOn, tap } from 'rxjs/operators';
+import { MatricialForm } from './parser/models/matricial-form';
 
 const THEME = 'ace/theme/monokai';
 const MODE = 'ace/mode/progLin';
@@ -18,19 +17,32 @@ const MODE = 'ace/mode/progLin';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   @ViewChild('editor', { static: true }) editor!: ElementRef<HTMLDivElement>;
   @ViewChild('fpi', { static: true }) fpi!: ElementRef<HTMLDivElement>;
 
-  resultingFPI = new BehaviorSubject<null | Fpi>(null);
+  private matricialValue = new BehaviorSubject<MatricialForm | null>(null);
+  private error = new BehaviorSubject<string>('');
 
-  solution$ = this.resultingFPI.pipe(
-    debounceTime(500),
-    switchMap(fpi => fpi === null ? of(null) : this.simplexService.evaluate(fpi)
-    ), shareReplay(1));
+  error$ = this.error.asObservable();
+  solution$ = this.matricialValue.pipe(
+    observeOn(asyncScheduler),
+    switchMap(mat => {
+      if (mat === null) {
+        return of(null);
+      } else {
+        return this.simplexService.evaluate(mat);
+      }
+    }),
+    shareReplay(1));
 
-  constructor(private simplexService: SimplexService) {
+  private subscription = EMPTY.subscribe();
+
+  constructor(
+    private parserService: ParserService,
+    private simplexService: SimplexService
+  ) {
 
   }
 
@@ -42,41 +54,49 @@ export class AppComponent implements OnInit {
     fpi.setTheme(THEME);
     fpi.getSession().setMode(MODE);
     fpi.setReadOnly(true);
-    editor.getSession().on('change', () => {
-      try {
-        const val = langParser.parse(editor.getValue()) as ProgLin;
-        const fpii = val.toFPI();
-        fpi.setValue(fpii.toString());
-        fpi.clearSelection();
+    editor.getSession().on('change', async () => {
+      this.parserService.change(editor.getValue());
+    });
+    this.subscription = this.parserService.data$.subscribe(value => {
+      if (value === null) {
+        // Message to type something?
+      } else if (value.annotations) {
+        editor.getSession().setAnnotations(value.annotations);
+        this.matricialValue.next(null);
+        this.error.next('');
+        fpi.setValue('');
+      } else if (value.fpi) {
         editor.getSession().clearAnnotations();
-        this.resultingFPI.next(fpii);
-      } catch (e) {
-        this.resultingFPI.next(null);
-        if (e instanceof langParser.SyntaxError) {
-          editor.getSession().setAnnotations([
-            {
-              column: e.location.start.column - 1,
-              row: e.location.start.line - 1,
-              text: e.message,
-              type: 'error'
-            }
-          ]);
-        }
-        console.error(e);
+        this.matricialValue.next(null);
+        this.error.next('');
+        fpi.setValue(value.fpi);
+        fpi.clearSelection();
+      } else if (value.error) {
+        editor.getSession().clearAnnotations();
+        this.matricialValue.next(null);
+        this.error.next(value.error);
+        fpi.setValue('');
+      } else {
+        this.matricialValue.next(value);
+        this.error.next('');
       }
     });
-    editor.setValue(`max(0 -3a -4b +5c -5d)
+    editor.setValue(`max(-3a -4b +5c -5d)
     st:
-        0 +1a +1b +0c +0d <= 0 +5;
-        0 -1a +0b -5c +5d <= 0 -10;
-        0 +2a +1b +1c -1d <= 0 +10;
-        0 -2a -1b -1c +1d <= 0 -10;
+        +1a +1b +0c +0d <= +5;
+        -1a +0b -5c +5d <= -10;
+        +2a +1b +1c -1d <= +10;
+        -2a -1b -1c +1d <= -10;
         a >= 0;
         b >= 0;
         c >= 0;
         d >= 0;
 `);
     editor.clearSelection();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

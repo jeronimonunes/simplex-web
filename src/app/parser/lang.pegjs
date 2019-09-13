@@ -8,18 +8,16 @@ Restrictions = ("st:"/"sujeito a:") _ restrictions:(Restriction ';'? _)+ {
     return restrictions.map(r=>r[0]);
 }
 
-Restriction = Greater / Smaller / Equality
-
-Greater = left:Expression _ ">=" _ right:Expression {
-    return new Greater(left, right);
-}
-
-Smaller = left:Expression _ "<=" _ right:Expression {
-    return new Smaller(left, right)
-}
-
-Equality = left:Expression _ "=="/"=" _ right:Expression {
-    return new Equality(left, right);
+Restriction = left:Expression _ type:(">="/"<="/"=="/"=") _ right:Expression {
+    switch(type) {
+        case ">=":
+            return new Greater(left, right);
+        case "<=":
+            return new Smaller(left, right);
+        case "=":
+        case "==":
+            return new Equality(left, right);
+    }
 }
 
 Addition = head:Subtraction tail:(_ "+" _ Subtraction)* {
@@ -60,10 +58,11 @@ Division = head:Factor tail:(_ "/" _ Factor)* {
 
 Factor = "(" _ expr:Expression _ ")" { return new Factor(expr); }
   / n:Integer? v:Id { return new Variable(n || ONE, v)}
+  / "-" v:Id { return new Variable(NEG, v)}
   / Integer
 
 Integer "integer"
-  = _ [0-9]+ { return new Fraction(BigInt(text()), 1n) }
+  = _ [+-]?[0-9]+ { return new Fraction(BigInt(text()), 1n) }
 
 Id = [a-zA-Z][a-zA-Z0-9]* {
     return text()

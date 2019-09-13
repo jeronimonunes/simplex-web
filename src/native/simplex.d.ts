@@ -3,6 +3,13 @@ export interface NativeFraction {
     denominator: string;
 }
 
+export interface Result {
+    value: NativeFraction,
+    solution: NativeFraction[],
+    certificate: NativeFraction[],
+    type: 'ILIMITED' | 'LIMITED' | 'UNFEASEABLE'
+}
+
 export declare class SimplexNativeModule {
 
     simplex: (...args: any[]) => any;

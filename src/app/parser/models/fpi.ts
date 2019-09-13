@@ -1,6 +1,7 @@
 import { CanonicalAddition } from './canonical-addition';
 import { CanonicalEquality } from './canonical-equality';
 import { NEG } from './fraction';
+import { MatricialForm } from './matricial-form';
 
 export class Fpi {
 
@@ -8,7 +9,7 @@ export class Fpi {
 
     }
 
-    toMatrix() {
+    toMatrix(): MatricialForm {
         const c = this.vars.map(v => this.objective.getCoefficient(v).multiply(NEG).toNativeFraction());
         const a = this.restrictions.map(r => this.vars.map(v => r.getCoefficient(v).toNativeFraction()));
         const b = this.restrictions.map(r => r.getIndependent().toNativeFraction());

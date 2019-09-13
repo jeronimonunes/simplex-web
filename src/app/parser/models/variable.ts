@@ -28,6 +28,10 @@ export class Variable extends Expression {
         return set;
     }
 
+    invert(): Expression {
+        throw new Error('You cannot put a variable in the denominator');
+    }
+
     toString(sign = true) {
         let fac = this.factor.toString(false);
         if (fac.indexOf('/') !== -1) {

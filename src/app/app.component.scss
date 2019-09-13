@@ -7,3 +7,10 @@
     height: 15em;
     margin: 1em;
 }
+
+mat-toolbar[color='warn'] {
+    width: calc(100% - 2em);
+    height: 32px;
+    font-size: 1em;
+    margin: 1em;
+}
