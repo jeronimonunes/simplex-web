@@ -23,7 +23,67 @@
 </div>
 <div #fpi></div>
 
-<div class="instructions">
-  <p>Solution</p>
-  <p>{{solution$ | async | json}}</p>
+<div class="instructions" *ngIf="solution$ | async as solution">
+  <div [ngSwitch]="solution.type">
+    <h2>Solution</h2>
+    <span *ngSwitchCase="'ILIMITED'">ILIMITED</span>
+    <span *ngSwitchCase="'UNFEASEABLE'">UNFEASEABLE</span>
+    <ng-container *ngSwitchCase="'LIMITED'">
+      <div>
+        <label>Solution Type:</label>
+        <span>LIMITED</span>
+      </div>
+      <div>
+        <label>Objective value:</label>
+        <span>{{solution.value | fraction}}</span>
+      </div>
+      <div>
+        <label>Solution:</label>
+        <span *ngFor="let v of solution.solution; let i = index">
+          <ng-template [ngIf]="i != 0">,</ng-template>
+          {{v | fraction}}
+        </span>
+      </div>
+      <div>
+        <label>Certificate:</label>
+        <span *ngFor="let v of solution.certificate; let i = index">
+          <ng-template [ngIf]="i != 0">,</ng-template>
+          {{v | fraction}}
+        </span>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'ILIMITED'">
+      <div>
+        <label>Solution Type:</label>
+        <span>ILIMITED</span>
+      </div>
+      <div>
+        <label>Solution:</label>
+        <span *ngFor="let v of solution.solution; let i = index">
+          <ng-template [ngIf]="i != 0">,</ng-template>
+          {{v | fraction}}
+        </span>
+      </div>
+      <div>
+        <label>Certificate:</label>
+        <span *ngFor="let v of solution.certificate; let i = index">
+          <ng-template [ngIf]="i != 0">,</ng-template>
+          {{v | fraction}}
+        </span>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'UNFEASIBLE'">
+      <div>
+        <label>Solution Type:</label>
+        <span>UNFEASIBLE</span>
+      </div>
+      <div>
+        <label>Certificate:</label>
+        <span *ngFor="let v of solution.certificate; let i = index">
+          <ng-template [ngIf]="i != 0">,</ng-template>
+          {{v | fraction}}
+        </span>
+      </div>
+    </ng-container>
+  </div>
 </div>
