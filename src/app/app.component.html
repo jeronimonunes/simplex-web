@@ -13,13 +13,14 @@
   <p>Down below you may write your Linear Program, use the example as a basis to understand the sintax.
     Simple mathematical expressions like *, +, -, /, are going to be interpreted before running simplex.
   </p>
+  <h2>Input:</h2>
 </div>
-
 <div #editor></div>
 
 <mat-toolbar *ngIf="error$ | async as error" color="warn">{{error}}</mat-toolbar>
 <div class="instructions">
   <p>Following you can see the PL you typed above turned into FPI form</p>
+  <h2>FPI:</h2>
 </div>
 <div #fpi></div>
 
