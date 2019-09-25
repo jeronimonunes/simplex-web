@@ -20,22 +20,24 @@ const MODE = 'ace/mode/progLin';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+  constructor(
+    private parserService: ParserService,
+    private simplexService: SimplexService
+  ) {
+
+  }
+
   @ViewChild('editor', { static: true }) editor!: ElementRef<HTMLDivElement>;
   @ViewChild('fpi', { static: true }) fpi!: ElementRef<HTMLDivElement>;
 
   private matricialValue = new BehaviorSubject<MatricialForm | null>(null);
   private error = new BehaviorSubject<string>('');
 
+  vars$ = this.matricialValue.pipe(map(mat => mat ? mat.vars : null));
   error$ = this.error.asObservable();
   solution$ = this.matricialValue.pipe(
     observeOn(asyncScheduler),
-    switchMap(mat => {
-      if (mat === null) {
-        return of(null);
-      } else {
-        return this.simplexService.evaluate(mat);
-      }
-    }),
+    switchMap(mat => this.simplexService.evaluate(mat)),
     shareReplay(1));
 
   answear$ = this.solution$.pipe(map(v => v ? v.answear : null));
@@ -53,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
   style$ = this.numberOfColumns$.pipe(map(cols => {
     return {
       'grid-template-columns': `repeat(${cols}, auto)`
-    }
+    };
   }));
 
   headStyle$ = this.numberOfColumns$.pipe(map(cols => {
@@ -62,6 +64,8 @@ export class AppComponent implements OnInit, OnDestroy {
     };
   }));
 
+  private subscription = EMPTY.subscribe();
+
   spacerStyle$(val: Tabloid) {
     return this.numberOfColumns$.pipe(map(cols => {
       const diff = cols - val.certificate.length - val.C.length - 1;
@@ -69,51 +73,45 @@ export class AppComponent implements OnInit, OnDestroy {
     }));
   }
 
-  private subscription = EMPTY.subscribe();
-
-  constructor(
-    private parserService: ParserService,
-    private simplexService: SimplexService
-  ) {
-
-  }
-
   ngOnInit() {
-    const editor = ace.edit(this.editor.nativeElement);
-    editor.setTheme(THEME);
-    editor.getSession().setMode(MODE);
-    const fpi = ace.edit(this.fpi.nativeElement);
-    fpi.setTheme(THEME);
-    fpi.getSession().setMode(MODE);
-    fpi.setReadOnly(true);
-    editor.getSession().on('change', async () => {
-      this.parserService.change(editor.getValue());
+    const inputEditor = ace.edit(this.editor.nativeElement);
+    inputEditor.setTheme(THEME);
+    inputEditor.getSession().setMode(MODE);
+
+    const fpiEditor = ace.edit(this.fpi.nativeElement);
+    fpiEditor.setTheme(THEME);
+    fpiEditor.getSession().setMode(MODE);
+    fpiEditor.setReadOnly(true);
+
+    inputEditor.getSession().on('change', async () => {
+      this.parserService.next(inputEditor.getValue());
     });
+
     this.subscription = this.parserService.data$.subscribe(value => {
       if (value === null) {
         // Message to type something?
       } else if (value.annotations) {
-        editor.getSession().setAnnotations(value.annotations);
+        inputEditor.getSession().setAnnotations(value.annotations);
         this.matricialValue.next(null);
         this.error.next('');
-        fpi.setValue('');
+        fpiEditor.setValue('');
       } else if (value.fpi) {
-        editor.getSession().clearAnnotations();
+        inputEditor.getSession().clearAnnotations();
         this.matricialValue.next(null);
         this.error.next('');
-        fpi.setValue(value.fpi);
-        fpi.clearSelection();
+        fpiEditor.setValue(value.fpi);
+        fpiEditor.clearSelection();
       } else if (value.error) {
-        editor.getSession().clearAnnotations();
+        inputEditor.getSession().clearAnnotations();
         this.matricialValue.next(null);
         this.error.next(value.error);
-        fpi.setValue('');
+        fpiEditor.setValue('');
       } else {
         this.matricialValue.next(value);
         this.error.next('');
       }
     });
-    editor.setValue(`max(-3a -4b +5c -5d)
+    inputEditor.setValue(`max(-3a -4b +5c -5d)
     st:
         +1a +1b +0c +0d <= +5;
         -1a +0b -5c +5d <= -10;
@@ -124,7 +122,7 @@ export class AppComponent implements OnInit, OnDestroy {
         c >= 0;
         d >= 0;
 `);
-    editor.clearSelection();
+    inputEditor.clearSelection();
   }
 
   ngOnDestroy() {

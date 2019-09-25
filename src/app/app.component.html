@@ -40,10 +40,24 @@
       </div>
       <div>
         <label>Solution:</label>
-        <span *ngFor="let v of solution.solution; let i = index">
+        <ng-container *ngFor="let v of vars$ | async; let i = index; let last = last">
+          <label>{{v}}</label>
+          <span style="margin-right: .5em">=</span>
+          <span>{{solution.solution[i] | fraction}}</span>
+          <span style="margin-right: 1em" *ngIf="!last">,</span>
+        </ng-container>
+      </div>
+      <div>
+        <label>Solution:</label>
+        (<span *ngFor="let v of vars$ | async; let i = index">
+          <ng-template [ngIf]="i != 0">,</ng-template>
+          {{v}}
+        </span>)
+        =
+        (<span *ngFor="let v of solution.solution; let i = index">
           <ng-template [ngIf]="i != 0">,</ng-template>
           {{v | fraction}}
-        </span>
+        </span>)
       </div>
       <div>
         <label>Certificate:</label>

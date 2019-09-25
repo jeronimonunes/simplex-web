@@ -13,6 +13,7 @@ import { Equality } from './models/equality';
 import { Greater } from './models/greater';
 import { Smaller } from './models/smaller';
 import { Fraction, ONE, NEG } from './models/fraction';
+import { ParserOutput } from './parser-output';
 
 // tslint:disable: no-string-literal
 
@@ -43,7 +44,7 @@ addEventListener('message', ({ data }) => {
     const fpi = val.toFPI();
     postMessage({
       fpi: fpi.toString()
-    });
+    } as ParserOutput);
     postMessage(fpi.toMatrix());
   } catch (e) {
     if (e instanceof langParser.SyntaxError) {
@@ -54,9 +55,9 @@ addEventListener('message', ({ data }) => {
           text: e.message,
           type: 'error'
         }]
-      });
+      } as ParserOutput);
     } else {
-      postMessage({ error: e.message });
+      postMessage({ error: e.message } as ParserOutput);
     }
     console.error(e);
   }

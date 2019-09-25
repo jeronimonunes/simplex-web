@@ -123,6 +123,7 @@ emscripten::val simplex(emscripten::val a, emscripten::val b, emscripten::val c)
       tabloid = tabloid.runSimplexStep(run);
       steps.call<void>("push", tabloidToJs(tabloid, "Primal #" + std::to_string(step++)));
     }
+    res.set("answear", resultToJs(tabloid.getResult()));
   }
   res.set("steps", steps);
   return res;

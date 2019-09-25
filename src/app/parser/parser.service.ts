@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ParserOutput } from './parser-output';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ParserService {
 
   private worker: Worker;
-  private data = new BehaviorSubject<any>(null);
+  private data = new BehaviorSubject<ParserOutput | null>(null);
   public data$ = this.data.asObservable();
 
   constructor() {
@@ -17,7 +18,7 @@ export class ParserService {
     };
   }
 
-  change(value: string) {
+  next(value: string) {
     this.worker.postMessage(value);
   }
 }

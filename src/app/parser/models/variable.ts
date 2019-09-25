@@ -33,7 +33,7 @@ export class Variable extends Expression {
     }
 
     toString(sign = true) {
-        let fac = this.factor.toString(false);
+        let fac = this.factor.toString(sign);
         if (fac.indexOf('/') !== -1) {
             fac = '(' + fac + ')';
         }

@@ -36,10 +36,19 @@ export class CanonicalAddition extends Expression {
             result += this.independent;
         }
         for (const term of this.terms) {
-            if (result) {
-                result += ' ';
+            if (term.factor.isZero()) {
+            } else if (term.factor.isPositive()) {
+                if (result) {
+                    result += ' + ';
+                }
+            } else {
+                if (result) {
+                    result += ' - ';
+                } else {
+                    result += '-';
+                }
             }
-            result += term;
+            result += term.toString(false);
         }
         return result;
     }
