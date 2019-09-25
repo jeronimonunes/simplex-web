@@ -19,3 +19,31 @@ label {
     margin-right: .5em;
     font-weight: bold;
 }
+
+.steps {
+    display: grid;
+    height: auto;
+    width: auto;
+    padding: 1em;
+}
+
+.bdown {
+    border-bottom: 1px solid #F92672;
+}
+
+.bleft {
+    border-left: 1px solid #F92672;
+}
+
+h3 {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.sh1 {
+    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2);
+}
+
+.sh2 {
+    box-shadow: 0px 12px 17px 2px rgba(0, 0, 0, 0.14);
+}

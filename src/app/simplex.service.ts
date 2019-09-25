@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Fpi } from './parser/models/fpi';
 import { Observable } from 'rxjs';
-import { Result } from 'src/native/simplex';
+import { Result, Tabloid } from 'src/native/simplex';
 import { MatricialForm } from './parser/models/matricial-form';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class SimplexService {
   constructor() { }
 
   evaluate(mat: MatricialForm) {
-    return new Observable<Result>(observer => {
+    return new Observable<{ answear: Result, steps: Tabloid[] }>(observer => {
       const worker = new Worker('./simplex.worker', { type: 'module' });
       worker.onmessage = ({ data }) => {
         observer.next(data);

@@ -1,6 +1,6 @@
 export
 	CXX = em++
-	CXXFLAGS = -O3 -std=c++11 -s MODULARIZE=1 --bind \
+	CXXFLAGS = -O3 -std=c++17 -s MODULARIZE=1 --bind \
 	--llvm-lto 1 -s FILESYSTEM=0 -s ENVIRONMENT=worker --closure 1
 
 all: simplex adapter.o
@@ -8,7 +8,7 @@ all: simplex adapter.o
 	simplex/bigint/BigInteger.o simplex/bigint/BigIntegerAlgorithms.o \
 	simplex/bigint/BigUnsignedInABase.o simplex/bigint/BigIntegerUtils.o \
 	simplex/src/Vector.o simplex/src/Tabloid.o simplex/src/StringUtil.o simplex/src/Simplex.o \
-	simplex/src/Matrix.o simplex/src/Io.o simplex/src/Fraction.o simplex/src/Coordinate.o \
+	simplex/src/Matrix.o simplex/src/Io.o simplex/src/Fraction.o \
 	simplex/src/Base.o 
 
 adapter.o: Adapter.cc

@@ -5,8 +5,9 @@ import './prog-lin.ace.mod';
 import { SimplexService } from './simplex.service';
 import { BehaviorSubject, EMPTY, of, asyncScheduler } from 'rxjs';
 import { ParserService } from './parser/parser.service';
-import { switchMap, shareReplay, observeOn, tap } from 'rxjs/operators';
+import { switchMap, shareReplay, observeOn, tap, pluck, map } from 'rxjs/operators';
 import { MatricialForm } from './parser/models/matricial-form';
+import { Tabloid } from 'src/native/simplex';
 
 const THEME = 'ace/theme/monokai';
 const MODE = 'ace/mode/progLin';
@@ -36,6 +37,37 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     }),
     shareReplay(1));
+
+  answear$ = this.solution$.pipe(map(v => v ? v.answear : null));
+  steps$ = this.solution$.pipe(map(v => v ? v.steps : null));
+
+  numberOfColumns$ = this.steps$.pipe(map(steps => {
+    if (steps) {
+      return steps.reduce((acc, val) =>
+        Math.max(val.certificate.length + val.C.length + 1, acc), 0);
+    } else {
+      return 0;
+    }
+  }), shareReplay(1));
+
+  style$ = this.numberOfColumns$.pipe(map(cols => {
+    return {
+      'grid-template-columns': `repeat(${cols}, auto)`
+    }
+  }));
+
+  headStyle$ = this.numberOfColumns$.pipe(map(cols => {
+    return {
+      'grid-column-start': 'span ' + cols
+    };
+  }));
+
+  spacerStyle$(val: Tabloid) {
+    return this.numberOfColumns$.pipe(map(cols => {
+      const diff = cols - val.certificate.length - val.C.length - 1;
+      return diff ? { 'grid-column-end': 'span ' + diff } : { display: 'none' };
+    }));
+  }
 
   private subscription = EMPTY.subscribe();
 

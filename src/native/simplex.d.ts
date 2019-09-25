@@ -10,6 +10,17 @@ export interface Result {
     type: 'ILIMITED' | 'LIMITED' | 'UNFEASEABLE'
 }
 
+export interface Tabloid {
+    name: string;
+    certificate: NativeFraction[];
+    certificateMatrix: NativeFraction[][];
+    A: NativeFraction[][];
+    B: NativeFraction[];
+    C: NativeFraction[];
+    v: NativeFraction
+    base: { [key: number]: number };
+}
+
 export declare class SimplexNativeModule {
 
     simplex: (...args: any[]) => any;

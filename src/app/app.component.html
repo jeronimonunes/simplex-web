@@ -15,16 +15,16 @@
   </p>
   <h2>Input:</h2>
 </div>
-<div #editor></div>
+<div class="mat-elevation-z12" #editor></div>
 
 <mat-toolbar *ngIf="error$ | async as error" color="warn">{{error}}</mat-toolbar>
 <div class="instructions">
   <p>Following you can see the PL you typed above turned into FPI form</p>
   <h2>FPI:</h2>
 </div>
-<div #fpi></div>
+<div class="mat-elevation-z12" #fpi></div>
 
-<div class="instructions" *ngIf="solution$ | async as solution">
+<div class="instructions" *ngIf="answear$ | async as solution">
   <div [ngSwitch]="solution.type">
     <h2>Solution</h2>
     <span *ngSwitchCase="'ILIMITED'">ILIMITED</span>
@@ -87,4 +87,34 @@
       </div>
     </ng-container>
   </div>
+</div>
+
+<div class="instructions">
+  <h2>Steps:</h2>
+</div>
+<div class="mat-elevation-z12 steps ace_editor ace-monokai ace_dark" *ngIf="steps$ | async as steps"
+  [ngStyle]="style$ | async">
+  <ng-container *ngFor="let step of steps">
+    <h3 [ngStyle]="headStyle$ | async">{{step.name}}</h3>
+    <!-- Header -->
+    <ng-container *ngFor="let v of step.certificate">
+      <app-fraction class="ace_constant ace_numeric bdown" [value]="v"></app-fraction>
+    </ng-container>
+    <ng-container *ngFor="let v of step.C; let first = first">
+      <app-fraction class="ace_constant ace_numeric bdown" [class.bleft]="first" [value]="v"></app-fraction>
+    </ng-container>
+    <div class="bdown" [ngStyle]="spacerStyle$(step) | async"></div>
+    <app-fraction class="ace_constant ace_numeric bdown bleft" [value]="step.v"></app-fraction>
+    <!-- Body -->
+    <ng-container *ngFor="let line of step.A; let i = index; let last = last">
+      <ng-container *ngFor="let v of step.certificateMatrix[i]">
+        <app-fraction class="ace_constant ace_numeric" [class.sh2]="last" [class.sh1]="last" [value]="v"></app-fraction>
+      </ng-container>
+      <ng-container *ngFor="let v of line; let first = first">
+        <app-fraction class="ace_constant ace_numeric" [class.bleft]="first" [class.sh2]="last" [class.sh1]="last" [value]="v"></app-fraction>
+      </ng-container>
+      <div [ngStyle]="spacerStyle$(step) | async"  [class.sh2]="last" [class.sh1]="last"></div>
+      <app-fraction class="ace_constant ace_numeric bleft" [class.sh2]="last" [class.sh1]="last" [value]="step.B[i]"></app-fraction>
+    </ng-container>
+  </ng-container>
 </div>

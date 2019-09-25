@@ -62,7 +62,7 @@ Factor = "(" _ expr:Expression _ ")" { return new Factor(expr); }
   / Integer
 
 Integer "integer"
-  = _ [+-]?[0-9]+ { return new Fraction(BigInt(text()), 1n) }
+  = _ [+-]?[0-9]+ { return new Fraction(BigInt(text()), BigInt(1)) }
 
 Id = [a-zA-Z][a-zA-Z0-9]* {
     return text()

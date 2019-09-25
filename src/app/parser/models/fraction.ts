@@ -3,6 +3,10 @@ import { NativeFraction } from 'src/native/simplex';
 
 declare const BigInt: (v: string | number) => bigint;
 
+if (typeof ((self as any).BigInt) === 'undefined') {
+    (self as any).BigInt = Number;
+}
+
 export class Fraction extends Expression {
 
     constructor(private numerator: bigint, private denominator: bigint) {

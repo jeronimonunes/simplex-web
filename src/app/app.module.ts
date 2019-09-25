@@ -8,11 +8,13 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FractionPipe } from './fraction.pipe';
+import { FractionComponent } from './fraction/fraction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FractionPipe
+    FractionPipe,
+    FractionComponent
   ],
   imports: [
     BrowserModule,
