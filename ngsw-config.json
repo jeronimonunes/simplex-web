@@ -10,6 +10,7 @@
           "/favicon.ico",
           "/index.html",
           "/manifest.webmanifest",
+          "/native/simplex.wasm",
           "/*.css",
           "/*.js"
         ]

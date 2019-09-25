@@ -38,6 +38,11 @@
       "type": "image/png"
     },
     {
+      "src": "assets/icons/icon-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
+    },
+    {
       "src": "assets/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png"
