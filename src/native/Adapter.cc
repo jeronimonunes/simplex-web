@@ -43,6 +43,12 @@ emscripten::val tabloidToJs(const Tabloid &tabloid, std::string name)
   tabloidJs.set("B", emscripten::val::array(tabloid.B));
   tabloidJs.set("C", emscripten::val::array(tabloid.C));
   tabloidJs.set("v", emscripten::val(tabloid.v));
+  emscripten::val baseJs = emscripten::val::object();
+  for (const auto &[x, y] : tabloid.base)
+  {
+    baseJs.set(y, x);
+  }
+  tabloidJs.set("base", baseJs);
   tabloidJs.set("name", name);
   return tabloidJs;
 }

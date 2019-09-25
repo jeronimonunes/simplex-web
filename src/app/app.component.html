@@ -100,8 +100,9 @@
     <ng-container *ngFor="let v of step.certificate">
       <app-fraction class="ace_constant ace_numeric bdown" [value]="v"></app-fraction>
     </ng-container>
-    <ng-container *ngFor="let v of step.C; let first = first">
-      <app-fraction class="ace_constant ace_numeric bdown" [class.bleft]="first" [value]="v"></app-fraction>
+    <ng-container *ngFor="let v of step.C; let first = first; let j = index">
+      <app-fraction class="ace_constant bdown" [class.ace_numeric]="step.base[j] === undefined"
+        [class.ace_variable]="step.base[j] !== undefined" [class.bleft]="first" [value]="v"></app-fraction>
     </ng-container>
     <div class="bdown" [ngStyle]="spacerStyle$(step) | async"></div>
     <app-fraction class="ace_constant ace_numeric bdown bleft" [value]="step.v"></app-fraction>
@@ -110,11 +111,14 @@
       <ng-container *ngFor="let v of step.certificateMatrix[i]">
         <app-fraction class="ace_constant ace_numeric" [class.sh2]="last" [class.sh1]="last" [value]="v"></app-fraction>
       </ng-container>
-      <ng-container *ngFor="let v of line; let first = first">
-        <app-fraction class="ace_constant ace_numeric" [class.bleft]="first" [class.sh2]="last" [class.sh1]="last" [value]="v"></app-fraction>
+      <ng-container *ngFor="let v of line; let first = first; let j = index">
+        <app-fraction class="ace_constant" [class.ace_numeric]="step.base[j] === undefined"
+          [class.ace_variable]="step.base[j] !== undefined" [class.bleft]="first" [class.sh2]="last" [class.sh1]="last"
+          [value]="v"></app-fraction>
       </ng-container>
-      <div [ngStyle]="spacerStyle$(step) | async"  [class.sh2]="last" [class.sh1]="last"></div>
-      <app-fraction class="ace_constant ace_numeric bleft" [class.sh2]="last" [class.sh1]="last" [value]="step.B[i]"></app-fraction>
+      <div [ngStyle]="spacerStyle$(step) | async" [class.sh2]="last" [class.sh1]="last"></div>
+      <app-fraction class="ace_constant ace_numeric bleft" [class.sh2]="last" [class.sh1]="last" [value]="step.B[i]">
+      </app-fraction>
     </ng-container>
   </ng-container>
 </div>
