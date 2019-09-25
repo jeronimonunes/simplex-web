@@ -1,0 +1,84 @@
+{
+  "configVersion": 1,
+  "timestamp": 1569386750833,
+  "index": "/simplex-web/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/simplex-web/0-es2015.ad4233e7406255b887be.worker.js",
+        "/simplex-web/1-es2015.5a1e0d04edde36d67da3.worker.js",
+        "/simplex-web/favicon.ico",
+        "/simplex-web/index.html",
+        "/simplex-web/main-es2015.d2d794dfca5d791cc2b2.js",
+        "/simplex-web/main-es5.d2d794dfca5d791cc2b2.js",
+        "/simplex-web/manifest.webmanifest",
+        "/simplex-web/polyfills-es2015.0fe6949bc5ff4b784062.js",
+        "/simplex-web/polyfills-es5.7aaacbf76784c780632a.js",
+        "/simplex-web/runtime-es2015.85f895af57b038f1e5b4.js",
+        "/simplex-web/runtime-es5.85f895af57b038f1e5b4.js",
+        "/simplex-web/styles.13ae2643b27ce39ddcc2.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/simplex-web/assets/icons/icon-128x128.png",
+        "/simplex-web/assets/icons/icon-144x144.png",
+        "/simplex-web/assets/icons/icon-152x152.png",
+        "/simplex-web/assets/icons/icon-192x192.png",
+        "/simplex-web/assets/icons/icon-384x384.png",
+        "/simplex-web/assets/icons/icon-512x512.png",
+        "/simplex-web/assets/icons/icon-72x72.png",
+        "/simplex-web/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/simplex-web/0-es2015.ad4233e7406255b887be.worker.js": "4a8bef56e1ff1b301e2b0d1fec96e62bfbe0bb04",
+    "/simplex-web/1-es2015.5a1e0d04edde36d67da3.worker.js": "4e36a161edc873b073a5130cf36f426b249c60f8",
+    "/simplex-web/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/simplex-web/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/simplex-web/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/simplex-web/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/simplex-web/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/simplex-web/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/simplex-web/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/simplex-web/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/simplex-web/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/simplex-web/index.html": "a72e6eb161d917799c97db9e0aa6927c5d7850d7",
+    "/simplex-web/main-es2015.d2d794dfca5d791cc2b2.js": "ebe99798a3d771f5d48afe811b4180547a49223d",
+    "/simplex-web/main-es5.d2d794dfca5d791cc2b2.js": "c38f31061646b6b2576cb03397a93c2aad40cb93",
+    "/simplex-web/manifest.webmanifest": "72a7a2e9755b90617c4e63d0b662ff86548dd1fd",
+    "/simplex-web/polyfills-es2015.0fe6949bc5ff4b784062.js": "e2f28c3743afd2899e140ad831df9675c233c02b",
+    "/simplex-web/polyfills-es5.7aaacbf76784c780632a.js": "db091f7ef692a1d3add240459a2ea20c81cd6f19",
+    "/simplex-web/runtime-es2015.85f895af57b038f1e5b4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/simplex-web/runtime-es5.85f895af57b038f1e5b4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/simplex-web/styles.13ae2643b27ce39ddcc2.css": "2c6eb39a43204ddc933030dc78d17d857e68e6b0"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
