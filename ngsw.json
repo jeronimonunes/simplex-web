@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1569532578426,
+  "timestamp": 1569532947232,
   "index": "/simplex-web/index.html",
   "assetGroups": [
     {
@@ -56,7 +56,7 @@
     "/simplex-web/assets/icons/icon-72x72.png": "0caf818f1a58e25bc9cbf4f83104a9ed56a95789",
     "/simplex-web/assets/icons/icon-96x96.png": "9dfbf7a843479b8586ba81afd98a1dafff6f4f5c",
     "/simplex-web/favicon.ico": "60b17b5c0c32e89adf17ec1f376bfec3ee11ce2c",
-    "/simplex-web/index.html": "d72f98618de8645785f029806ca5386b3437c932",
+    "/simplex-web/index.html": "91025c99f1183673342f0dd8d9d7da3cdf498097",
     "/simplex-web/main-es2015.040d08e1e29584ddbd8e.js": "6819013d6d5505f265593e5e5feef7281acb68e1",
     "/simplex-web/main-es5.040d08e1e29584ddbd8e.js": "21d86805b7997fee167fe9f7444c81ed503878cd",
     "/simplex-web/manifest.webmanifest": "fb9e297fb865e391b649eb7df1a3d9c6891c0a1e",
