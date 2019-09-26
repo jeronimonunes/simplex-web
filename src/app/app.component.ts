@@ -1,13 +1,13 @@
 import { Component, ViewChild, ElementRef, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import * as ace from 'brace';
-import 'brace/theme/monokai';
-import './prog-lin.ace.mod';
 import { SimplexService } from './simplex.service';
-import { BehaviorSubject, EMPTY, of, asyncScheduler } from 'rxjs';
+import { BehaviorSubject, EMPTY, asyncScheduler } from 'rxjs';
 import { ParserService } from './parser/parser.service';
-import { switchMap, shareReplay, observeOn, tap, pluck, map } from 'rxjs/operators';
+import { switchMap, shareReplay, observeOn, map } from 'rxjs/operators';
 import { MatricialForm } from './parser/models/matricial-form';
 import { Tabloid } from 'src/native/simplex';
+import './prog-lin.ace.mod';
+import 'ace-builds/src-noconflict/theme-monokai';
+import { edit } from 'ace-builds';
 
 const THEME = 'ace/theme/monokai';
 const MODE = 'ace/mode/progLin';
@@ -74,16 +74,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const inputEditor = ace.edit(this.editor.nativeElement);
+    const inputEditor = edit(this.editor.nativeElement);
     inputEditor.setTheme(THEME);
     inputEditor.getSession().setMode(MODE);
 
-    const fpiEditor = ace.edit(this.fpi.nativeElement);
+    const fpiEditor = edit(this.fpi.nativeElement);
     fpiEditor.setTheme(THEME);
     fpiEditor.getSession().setMode(MODE);
     fpiEditor.setReadOnly(true);
 
-    inputEditor.getSession().on('change', async () => {
+    inputEditor.on('change', async () => {
       this.parserService.next(inputEditor.getValue());
     });
 

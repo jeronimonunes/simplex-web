@@ -1,4 +1,4 @@
-import * as ace from 'brace';
+import * as ace from 'ace-builds';
 
 // tslint:disable: only-arrow-functions
 
