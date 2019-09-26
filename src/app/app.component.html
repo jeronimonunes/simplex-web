@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
+<header>
   <h1>Simplex Web</h1>
-</mat-toolbar>
+</header>
 
 <div class="instructions">
   <p>This page has an implementation of the simplex algorithm.
@@ -17,7 +17,7 @@
 </div>
 <div class="mat-elevation-z12" #editor></div>
 
-<mat-toolbar *ngIf="error$ | async as error" color="warn">{{error}}</mat-toolbar>
+<div class="error" *ngIf="error$ | async as error">{{error}}</div>
 <div class="instructions">
   <p>Following you can see the PL you typed above turned into FPI form</p>
   <h2>FPI:</h2>
@@ -38,7 +38,7 @@
         <label>Objective value:</label>
         <span>{{solution.value | fraction}}</span>
       </div>
-      <div>
+      <div style="display: flex; flex-wrap: wrap">
         <label>Solution:</label>
         <ng-container *ngFor="let v of vars$ | async; let i = index; let last = last">
           <label>{{v}}</label>
@@ -47,7 +47,7 @@
           <span style="margin-right: 1em" *ngIf="!last">,</span>
         </ng-container>
       </div>
-      <div>
+      <div style="display: flex; flex-wrap: wrap">
         <label>Solution:</label>
         (<span *ngFor="let v of vars$ | async; let i = index">
           <ng-template [ngIf]="i != 0">,</ng-template>
@@ -72,7 +72,7 @@
         <label>Solution Type:</label>
         <span>ILIMITED</span>
       </div>
-      <div>
+      <div style="display: flex; flex-wrap: wrap">
         <label>Solution:</label>
         <span *ngFor="let v of solution.solution; let i = index">
           <ng-template [ngIf]="i != 0">,</ng-template>
