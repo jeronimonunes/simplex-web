@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1569530596291,
+  "timestamp": 1569532146026,
   "index": "/simplex-web/index.html",
   "assetGroups": [
     {
@@ -12,15 +12,15 @@
         "/simplex-web/1-es2015.c9f02bef9d6d9a430e7f.worker.js",
         "/simplex-web/favicon.ico",
         "/simplex-web/index.html",
-        "/simplex-web/main-es2015.fe130876f3dc36fd3500.js",
-        "/simplex-web/main-es5.fe130876f3dc36fd3500.js",
+        "/simplex-web/main-es2015.040d08e1e29584ddbd8e.js",
+        "/simplex-web/main-es5.040d08e1e29584ddbd8e.js",
         "/simplex-web/manifest.webmanifest",
         "/simplex-web/native/simplex.wasm",
         "/simplex-web/polyfills-es2015.0fe6949bc5ff4b784062.js",
         "/simplex-web/polyfills-es5.7aaacbf76784c780632a.js",
         "/simplex-web/runtime-es2015.85f895af57b038f1e5b4.js",
         "/simplex-web/runtime-es5.85f895af57b038f1e5b4.js",
-        "/simplex-web/styles.a15d59acad0aaf71f12e.css"
+        "/simplex-web/styles.8687ddfb9ef0bfa389dc.css"
       ],
       "patterns": []
     },
@@ -56,16 +56,16 @@
     "/simplex-web/assets/icons/icon-72x72.png": "0caf818f1a58e25bc9cbf4f83104a9ed56a95789",
     "/simplex-web/assets/icons/icon-96x96.png": "9dfbf7a843479b8586ba81afd98a1dafff6f4f5c",
     "/simplex-web/favicon.ico": "60b17b5c0c32e89adf17ec1f376bfec3ee11ce2c",
-    "/simplex-web/index.html": "2cb6563241d2e647834767b2867e55bd74f97c20",
-    "/simplex-web/main-es2015.fe130876f3dc36fd3500.js": "475bdabcaa6c8f53efb1ae669ed7531293787bc9",
-    "/simplex-web/main-es5.fe130876f3dc36fd3500.js": "7028b21da1ee6dc051277a63f55f18c24c7b00d1",
-    "/simplex-web/manifest.webmanifest": "9b4d301fffd6f2123b60528f4c99ab1318810740",
+    "/simplex-web/index.html": "d72f98618de8645785f029806ca5386b3437c932",
+    "/simplex-web/main-es2015.040d08e1e29584ddbd8e.js": "6819013d6d5505f265593e5e5feef7281acb68e1",
+    "/simplex-web/main-es5.040d08e1e29584ddbd8e.js": "21d86805b7997fee167fe9f7444c81ed503878cd",
+    "/simplex-web/manifest.webmanifest": "48374983e4364f72392839c67835c93e11424769",
     "/simplex-web/native/simplex.wasm": "6e2ddfb0fe60c7863f2b4ec1b63e056112c2ce82",
     "/simplex-web/polyfills-es2015.0fe6949bc5ff4b784062.js": "e2f28c3743afd2899e140ad831df9675c233c02b",
     "/simplex-web/polyfills-es5.7aaacbf76784c780632a.js": "db091f7ef692a1d3add240459a2ea20c81cd6f19",
     "/simplex-web/runtime-es2015.85f895af57b038f1e5b4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
     "/simplex-web/runtime-es5.85f895af57b038f1e5b4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/simplex-web/styles.a15d59acad0aaf71f12e.css": "a4ae06348d7758cc33eb36f2d462259febfa40fe"
+    "/simplex-web/styles.8687ddfb9ef0bfa389dc.css": "3f3616c8f654587b33ed76220fe91119e0f0487e"
   },
   "navigationUrls": [
     {
