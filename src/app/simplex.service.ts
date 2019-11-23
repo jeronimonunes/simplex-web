@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Result, Tabloid } from 'src/native/simplex';
-import { MatricialForm } from './parser/models/matricial-form';
+import { MatricialForm } from './parser/matricial-form';
 
 @Injectable({
   providedIn: 'root'

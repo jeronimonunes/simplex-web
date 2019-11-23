@@ -1,4 +1,4 @@
-import { MatricialForm } from './models/matricial-form';
+import { MatricialForm } from './matricial-form';
 
 interface Annotation {
     row: number;

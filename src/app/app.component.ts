@@ -3,7 +3,7 @@ import { SimplexService } from './simplex.service';
 import { BehaviorSubject, EMPTY, asyncScheduler } from 'rxjs';
 import { ParserService } from './parser/parser.service';
 import { switchMap, shareReplay, observeOn, map } from 'rxjs/operators';
-import { MatricialForm } from './parser/models/matricial-form';
+import { MatricialForm } from './parser/matricial-form';
 import { Tabloid } from 'src/native/simplex';
 import './prog-lin.ace.mod';
 import 'ace-builds/src-noconflict/theme-monokai';
