@@ -7,7 +7,7 @@ export interface Result {
     value: NativeFraction,
     solution: NativeFraction[],
     certificate: NativeFraction[],
-    type: 'ILIMITED' | 'LIMITED' | 'UNFEASEABLE'
+    type: 'ILIMITED' | 'LIMITED' | 'INFEASIBLE'
 }
 
 export interface Tabloid {

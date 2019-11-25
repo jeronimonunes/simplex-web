@@ -4,10 +4,6 @@ import { ParserOutput } from './parser-output';
 import { parse, SyntaxError } from 'linear-program-parser';
 import { MatricialForm } from './matricial-form';
 
-// tslint:disable: no-string-literal
-
-// Unfortunatelly pegjs does not have a way for us to pass the necessary classes.
-
 const toNativeFraction = (f: any) => ({
   numerator: '' + f.numerator,
   denominator: '' + f.denominator,

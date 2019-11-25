@@ -67,8 +67,8 @@ emscripten::val resultToJs(const Result &result)
   case ResultType::LIMITED:
     answear.set("type", "LIMITED");
     break;
-  case ResultType::UNFEASIBLE:
-    answear.set("type", "UNFEASIBLE");
+  case ResultType::INFEASIBLE:
+    answear.set("type", "INFEASIBLE");
     break;
   }
   return answear;
@@ -105,7 +105,7 @@ emscripten::val simplex(emscripten::val a, emscripten::val b, emscripten::val c)
   if (auxiliar.v.isNegative())
   {
     Result result = {
-        ResultType::UNFEASIBLE,
+        ResultType::INFEASIBLE,
         auxiliar.certificate,
         0,
         Vector(0)};
