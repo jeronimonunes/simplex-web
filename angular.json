@@ -22,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -48,7 +48,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -141,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "simplex-web"
+  "defaultProject": "simplex-web",
+  "cli": {
+    "analytics": "83ad4e97-9112-4e07-aa34-48d77c04cb7f"
+  }
 }
