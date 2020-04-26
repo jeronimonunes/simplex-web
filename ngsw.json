@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1575846498044,
+  "timestamp": 1587917470246,
   "index": "https://jeronimonunes.github.io/simplex-web/index.html",
   "assetGroups": [
     {
@@ -8,18 +8,20 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "https://jeronimonunes.github.io/simplex-web/0-es2015.9faeff29274738c482aa.worker.js",
-        "https://jeronimonunes.github.io/simplex-web/1-es2015.d48cf9b655248979b267.worker.js",
+        "https://jeronimonunes.github.io/simplex-web/0-es2015.ec406a805028bfaa3c8f.worker.js",
+        "https://jeronimonunes.github.io/simplex-web/0-es5.ec406a805028bfaa3c8f.worker.js",
+        "https://jeronimonunes.github.io/simplex-web/1-es2015.0b0f4be5356f9e824ea8.worker.js",
+        "https://jeronimonunes.github.io/simplex-web/1-es5.0b0f4be5356f9e824ea8.worker.js",
         "https://jeronimonunes.github.io/simplex-web/favicon.ico",
         "https://jeronimonunes.github.io/simplex-web/index.html",
-        "https://jeronimonunes.github.io/simplex-web/main-es2015.234eede32229bee9de22.js",
-        "https://jeronimonunes.github.io/simplex-web/main-es5.234eede32229bee9de22.js",
+        "https://jeronimonunes.github.io/simplex-web/main-es2015.0ac766a76b6a97e9421d.js",
+        "https://jeronimonunes.github.io/simplex-web/main-es5.0ac766a76b6a97e9421d.js",
         "https://jeronimonunes.github.io/simplex-web/manifest.webmanifest",
         "https://jeronimonunes.github.io/simplex-web/native/simplex.wasm",
-        "https://jeronimonunes.github.io/simplex-web/polyfills-es2015.2987770fde9daa1d8a2e.js",
-        "https://jeronimonunes.github.io/simplex-web/polyfills-es5.6696c533341b95a3d617.js",
-        "https://jeronimonunes.github.io/simplex-web/runtime-es2015.edb2fcf2778e7bf1d426.js",
-        "https://jeronimonunes.github.io/simplex-web/runtime-es5.edb2fcf2778e7bf1d426.js",
+        "https://jeronimonunes.github.io/simplex-web/polyfills-es2015.f2c5ab749249a66bdf26.js",
+        "https://jeronimonunes.github.io/simplex-web/polyfills-es5.049f620af8c864cf4d88.js",
+        "https://jeronimonunes.github.io/simplex-web/runtime-es2015.1eba213af0b233498d9d.js",
+        "https://jeronimonunes.github.io/simplex-web/runtime-es5.1eba213af0b233498d9d.js",
         "https://jeronimonunes.github.io/simplex-web/styles.8687ddfb9ef0bfa389dc.css"
       ],
       "patterns": []
@@ -44,8 +46,10 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://jeronimonunes.github.io/simplex-web/0-es2015.9faeff29274738c482aa.worker.js": "66cd09d43471d8ee19818b7f342cf91c0b030e14",
-    "https://jeronimonunes.github.io/simplex-web/1-es2015.d48cf9b655248979b267.worker.js": "865982fc4db75f7813661e81e6bfdeb51382599d",
+    "https://jeronimonunes.github.io/simplex-web/0-es2015.ec406a805028bfaa3c8f.worker.js": "085f87aaea8e1eaec2d9e88678fd937c644b96e8",
+    "https://jeronimonunes.github.io/simplex-web/0-es5.ec406a805028bfaa3c8f.worker.js": "be8eeae2d11af0150f4224942afe5f8c5a7ec994",
+    "https://jeronimonunes.github.io/simplex-web/1-es2015.0b0f4be5356f9e824ea8.worker.js": "cc1b743043687f71ae84d5a73a5d0870374d74e2",
+    "https://jeronimonunes.github.io/simplex-web/1-es5.0b0f4be5356f9e824ea8.worker.js": "b1891bd9bde0b9f3f29882d1e7a48f4bf324c65f",
     "https://jeronimonunes.github.io/simplex-web/assets/icons/icon-128x128.png": "bf0cd224e25d043fe17d4d392bbf362030ee85a6",
     "https://jeronimonunes.github.io/simplex-web/assets/icons/icon-144x144.png": "921dd5b02134755e17da0db5e02442524de28484",
     "https://jeronimonunes.github.io/simplex-web/assets/icons/icon-152x152.png": "e43065658bd39bcf8d6a161f32e4e0efe91c3f68",
@@ -56,16 +60,16 @@
     "https://jeronimonunes.github.io/simplex-web/assets/icons/icon-72x72.png": "0caf818f1a58e25bc9cbf4f83104a9ed56a95789",
     "https://jeronimonunes.github.io/simplex-web/assets/icons/icon-96x96.png": "9dfbf7a843479b8586ba81afd98a1dafff6f4f5c",
     "https://jeronimonunes.github.io/simplex-web/favicon.ico": "60b17b5c0c32e89adf17ec1f376bfec3ee11ce2c",
-    "https://jeronimonunes.github.io/simplex-web/index.html": "fa38167c9eee981ec96db2fedf4439ee0b167f84",
-    "https://jeronimonunes.github.io/simplex-web/main-es2015.234eede32229bee9de22.js": "4013921c8682de147e7b43630de50deaf7c394a5",
-    "https://jeronimonunes.github.io/simplex-web/main-es5.234eede32229bee9de22.js": "70b41ed3e32dafd564f0dbcbda125afa337175be",
+    "https://jeronimonunes.github.io/simplex-web/index.html": "6fb8678c88b21a0acfb34d600d34f1dab8667f49",
+    "https://jeronimonunes.github.io/simplex-web/main-es2015.0ac766a76b6a97e9421d.js": "49de1d7ab5e2e3fda54e279ec30f824709a4fd17",
+    "https://jeronimonunes.github.io/simplex-web/main-es5.0ac766a76b6a97e9421d.js": "3bcd5d60686c5084416c94c776dc6b7fd8693dc5",
     "https://jeronimonunes.github.io/simplex-web/manifest.webmanifest": "6edd32299e08d8d6ca9d40b91419c0292cb20138",
-    "https://jeronimonunes.github.io/simplex-web/native/simplex.wasm": "36183ebd70c4d881bb27f8874f269f83000cf5b1",
-    "https://jeronimonunes.github.io/simplex-web/polyfills-es2015.2987770fde9daa1d8a2e.js": "cf5cbfa9134716054fb479ab21362146cdf1f2ff",
-    "https://jeronimonunes.github.io/simplex-web/polyfills-es5.6696c533341b95a3d617.js": "9ceb13edd4b10268f661814868dadb2b284f9745",
-    "https://jeronimonunes.github.io/simplex-web/runtime-es2015.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://jeronimonunes.github.io/simplex-web/runtime-es5.edb2fcf2778e7bf1d426.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "https://jeronimonunes.github.io/simplex-web/styles.8687ddfb9ef0bfa389dc.css": "3f3616c8f654587b33ed76220fe91119e0f0487e"
+    "https://jeronimonunes.github.io/simplex-web/native/simplex.wasm": "19f765a7e07a3f13a86934151635767405e13273",
+    "https://jeronimonunes.github.io/simplex-web/polyfills-es2015.f2c5ab749249a66bdf26.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
+    "https://jeronimonunes.github.io/simplex-web/polyfills-es5.049f620af8c864cf4d88.js": "e51a1de4f016cd689dbdbef51043dec9518c4111",
+    "https://jeronimonunes.github.io/simplex-web/runtime-es2015.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://jeronimonunes.github.io/simplex-web/runtime-es5.1eba213af0b233498d9d.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://jeronimonunes.github.io/simplex-web/styles.8687ddfb9ef0bfa389dc.css": "74cc056e83948b32d61f09a9ff6e07063202f3c3"
   },
   "navigationUrls": [
     {
